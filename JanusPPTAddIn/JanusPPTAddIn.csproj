@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <!--
+    This section defines project-level properties.
+
+    AssemblyName
+      Name of the output assembly.
+    Configuration
+      Specifies a default value for debug.
+    OutputType
+      Must be "Library" for VSTO.
+    Platform
+      Specifies what CPU the output of this project can run on.
+    NoStandardLibraries
+      Set to "false" for VSTO.
+    RootNamespace
+      In C#, this specifies the namespace given to new files. In VB, all objects are
+      wrapped in this namespace at runtime.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{BAA0C2D2-18E2-41B9-852F-F413020CAA33};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{69B1B6E8-8C5E-4667-BDBB-9CBC7D7504FD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RootNamespace>JanusPPTAddIn</RootNamespace>
+    <AssemblyName>JanusPPTAddIn</AssemblyName>
+    <LoadBehavior>3</LoadBehavior>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <DefineConstants>VSTO40</DefineConstants>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>HomeSite</BootstrapperComponentsLocation>
+  </PropertyGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <PropertyGroup>
+    <!--
+      OfficeApplication
+        Add-in host application
+    -->
+    <OfficeApplication>PowerPoint</OfficeApplication>
+  </PropertyGroup>
+  <!--
+    This section defines properties that are set when the "Debug" configuration is selected.
+
+    DebugSymbols
+      If "true", create symbols (.pdb). If "false", do not create symbols.
+    DefineConstants
+      Constants defined for the preprocessor.
+    EnableUnmanagedDebugging
+      If "true", starting the debugger will attach both managed and unmanaged debuggers.
+    Optimize
+      If "true", optimize the build output. If "false", do not optimize.
+    OutputPath
+      Output path of project relative to the project file.
+    WarningLevel
+      Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!--
+    This section defines properties that are set when the "Release" configuration is selected.
+
+    DebugSymbols
+      If "true", create symbols (.pdb). If "false", do not create symbols.
+    DefineConstants
+      Constants defined for the preprocessor.
+    EnableUnmanagedDebugging
+      If "true", starting the debugger will attach both managed and unmanaged debuggers.
+    Optimize
+      If "true", optimize the build output. If "false", do not optimize.
+    OutputPath
+      Output path of project relative to the project file.
+    WarningLevel
+      Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!--
+    This section specifies references for the project.
+  -->
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Tools.v4.0.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Tools, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Tools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Tools.Common.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <Private>False</Private>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.PowerPoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <Private>False</Private>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <!--
+    This section defines the user source files that are part of the project.
+     
+    A "Compile" element specifies a source file to compile.
+    An "EmbeddedResource" element specifies an .resx file for embedded resources.
+    A "None" element specifies a file that is not to be passed to the compiler (for instance, 
+    a text file or XML file).
+    The "AppDesigner" element specifies the directory where the application properties files
+    can be found.
+  -->
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Ribbon1.resx">
+      <DependentUpon>Ribbon1.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="JanusPPTAddIn_TemporaryKey.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon.cs">
+      <XmlRibbon>true</XmlRibbon>
+    </Compile>
+    <Compile Include="Ribbon1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ribbon1.Designer.cs">
+      <DependentUpon>Ribbon1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThisAddIn.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="Resources\FoliensammlungJanusConsulting.pptx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\JanusAddIn_v0.8_Doku.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\JanusTheme.potx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ThisAddIn.Designer.xml">
+      <DependentUpon>ThisAddIn.cs</DependentUpon>
+    </None>
+    <Compile Include="ThisAddIn.Designer.cs">
+      <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JanusLogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JanusBanner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie2.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie3.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie4.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie5.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie6.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie7.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie8.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie9.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie10.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie11.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie12.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie13.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie14.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie15.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie16.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie17.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie18.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie19.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie20.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie21.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie22.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie23.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie24.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie25.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie26.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie27.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie28.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie29.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie30.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie31.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie32.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie33.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie34.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie35.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie36.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie37.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie38.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie39.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie40.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie41.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie42.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie43.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie44.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie45.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie46.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie47.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie48.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie49.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie50.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie51.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie52.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie53.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie54.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie55.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie56.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie57.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie58.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie59.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie60.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie61.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie62.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie63.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie64.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie65.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie66.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie67.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie68.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie69.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie70.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie71.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie72.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie73.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie74.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folie75.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JanusLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avi-richards-183715.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dustin-lee-19667.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\juliette-leufke-154599.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\olu-eletu-13086.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\olu-eletu-32387.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image6.jpg" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>JanusPPTAddIn_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>3DF808A627FAD680A684A378B5E4095368C7E476</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <!-- Include the build rules for a C# project. -->
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- Include additional build rules for an Office application add-in. -->
+  <Import Project="$(VSToolsPath)\OfficeTools\Microsoft.VisualStudio.Tools.Office.targets" Condition="'$(VSToolsPath)' != ''" />
+  <!-- This section defines VSTO properties that describe the host-changeable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
+        <ProjectProperties HostName="PowerPoint" HostPackage="{29A7B9D7-A7F1-4328-8EF0-6B2D1A56B2C1}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="PowerPoint" Language="cs" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\16.0\PowerPoint\InstallRoot\Path#powerpnt.exe" AddItemTemplatesGuid="{51063C3A-E220-4D12-8922-BDA915ACD783}" />
+        <Host Name="PowerPoint" GeneratedCodeNamespace="JanusPPTAddIn" IconIndex="0">
+          <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
+        </Host>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
