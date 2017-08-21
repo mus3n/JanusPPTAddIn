@@ -801,16 +801,6 @@ namespace JanusPPTAddIn.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
-        /// </summary>
-        internal static byte[] FoliensammlungJanusConsulting {
-            get {
-                object obj = ResourceManager.GetObject("FoliensammlungJanusConsulting", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Image1 {
@@ -871,16 +861,6 @@ namespace JanusPPTAddIn.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
-        /// </summary>
-        internal static byte[] JanusAddIn_v0_8_Doku {
-            get {
-                object obj = ResourceManager.GetObject("JanusAddIn_v0_8_Doku", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap JanusBanner {
@@ -897,16 +877,6 @@ namespace JanusPPTAddIn.Properties {
             get {
                 object obj = ResourceManager.GetObject("JanusLogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
-        /// </summary>
-        internal static byte[] JanusTheme {
-            get {
-                object obj = ResourceManager.GetObject("JanusTheme", resourceCulture);
-                return ((byte[])(obj));
             }
         }
     }
