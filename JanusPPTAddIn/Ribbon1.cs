@@ -16,10 +16,8 @@ namespace JanusPPTAddIn
     {
         private void Ribbon1_Load(object sender, RibbonUIEventArgs e)
         {
-            //Setting ColorScheme on start up
-            checkedIfColorSchemeExistsElseMoveIt(getPathToTheme());
 
-            
+
         }
         
         private void checkedIfColorSchemeExistsElseMoveIt(string path)
@@ -27,7 +25,10 @@ namespace JanusPPTAddIn
             if (System.IO.File.Exists(path))
             {
                 //MessageBox.Show("ColorScheme Exists!.");
-                Globals.ThisAddIn.Application.ActivePresentation.ApplyTheme(path);
+                if (Globals.ThisAddIn.Application.ActivePresentation != null) {
+                    Globals.ThisAddIn.Application.ActivePresentation.ApplyTheme(path);
+                }
+                
                 return;
             }
             else
@@ -46,7 +47,10 @@ namespace JanusPPTAddIn
                     System.IO.File.Copy(sourceFile, path);
                     if (System.IO.File.Exists(path))
                     {
-                        Globals.ThisAddIn.Application.ActivePresentation.ApplyTheme(path);
+                        if (Globals.ThisAddIn.Application.ActivePresentation != null)
+                        {
+                            Globals.ThisAddIn.Application.ActivePresentation.ApplyTheme(path);
+                        }
                         MessageBox.Show("Datei von " + sourceFile + " nach " + path + " kopiert. Jetzt sollte es laufen ;)");
                     }else
                     {
@@ -270,6 +274,11 @@ namespace JanusPPTAddIn
         private void padding_Click(object sender, RibbonControlEventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, RibbonControlEventArgs e)
+        {
+            checkedIfColorSchemeExistsElseMoveIt(getPathToTheme());
         }
     }
 }

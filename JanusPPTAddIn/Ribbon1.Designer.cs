@@ -36,7 +36,6 @@ namespace JanusPPTAddIn
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ribbon1));
             Microsoft.Office.Tools.Ribbon.RibbonDropDownItem ribbonDropDownItemImpl1 = this.Factory.CreateRibbonDropDownItem();
             Microsoft.Office.Tools.Ribbon.RibbonDropDownItem ribbonDropDownItemImpl2 = this.Factory.CreateRibbonDropDownItem();
             Microsoft.Office.Tools.Ribbon.RibbonDropDownItem ribbonDropDownItemImpl3 = this.Factory.CreateRibbonDropDownItem();
@@ -119,8 +118,6 @@ namespace JanusPPTAddIn
             Microsoft.Office.Tools.Ribbon.RibbonDropDownItem ribbonDropDownItemImpl80 = this.Factory.CreateRibbonDropDownItem();
             this.JanusTab = this.Factory.CreateRibbonTab();
             this.group2 = this.Factory.CreateRibbonGroup();
-            this.box2 = this.Factory.CreateRibbonBox();
-            this.padding = this.Factory.CreateRibbonButton();
             this.group1 = this.Factory.CreateRibbonGroup();
             this.SlideBibGallery = this.Factory.CreateRibbonGallery();
             this.group3 = this.Factory.CreateRibbonGroup();
@@ -132,9 +129,9 @@ namespace JanusPPTAddIn
             this.editBox1 = this.Factory.CreateRibbonEditBox();
             this.editBox2 = this.Factory.CreateRibbonEditBox();
             this.editBox3 = this.Factory.CreateRibbonEditBox();
+            this.button3 = this.Factory.CreateRibbonButton();
             this.JanusTab.SuspendLayout();
             this.group2.SuspendLayout();
-            this.box2.SuspendLayout();
             this.group1.SuspendLayout();
             this.group3.SuspendLayout();
             this.group4.SuspendLayout();
@@ -152,22 +149,9 @@ namespace JanusPPTAddIn
             // 
             // group2
             // 
-            this.group2.Items.Add(this.box2);
+            this.group2.Items.Add(this.button3);
             this.group2.Label = " ";
             this.group2.Name = "group2";
-            // 
-            // box2
-            // 
-            this.box2.BoxStyle = Microsoft.Office.Tools.Ribbon.RibbonBoxStyle.Vertical;
-            this.box2.Items.Add(this.padding);
-            this.box2.Name = "box2";
-            // 
-            // padding
-            // 
-            this.padding.Label = " ";
-            this.padding.Name = "padding";
-            this.padding.ShowLabel = false;
-            this.padding.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.padding_Click);
             // 
             // group1
             // 
@@ -179,7 +163,7 @@ namespace JanusPPTAddIn
             // 
             this.SlideBibGallery.ColumnCount = 2;
             this.SlideBibGallery.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.SlideBibGallery.Image = ((System.Drawing.Image)(resources.GetObject("SlideBibGallery.Image")));
+            this.SlideBibGallery.Image = global::JanusPPTAddIn.Properties.Resources.Folie2;
             this.SlideBibGallery.ImageName = "JanusLogo";
             this.SlideBibGallery.ItemImageSize = new System.Drawing.Size(330, 190);
             ribbonDropDownItemImpl1.Image = global::JanusPPTAddIn.Properties.Resources.Folie2;
@@ -494,6 +478,15 @@ namespace JanusPPTAddIn
             this.editBox3.Name = "editBox3";
             this.editBox3.Text = null;
             // 
+            // button3
+            // 
+            this.button3.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.button3.Image = global::JanusPPTAddIn.Properties.Resources.JanusLogo;
+            this.button3.Label = "Setze Janus Farben";
+            this.button3.Name = "button3";
+            this.button3.ShowImage = true;
+            this.button3.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button3_Click);
+            // 
             // Ribbon1
             // 
             this.Name = "Ribbon1";
@@ -504,8 +497,6 @@ namespace JanusPPTAddIn
             this.JanusTab.PerformLayout();
             this.group2.ResumeLayout(false);
             this.group2.PerformLayout();
-            this.box2.ResumeLayout(false);
-            this.box2.PerformLayout();
             this.group1.ResumeLayout(false);
             this.group1.PerformLayout();
             this.group3.ResumeLayout(false);
@@ -524,8 +515,6 @@ namespace JanusPPTAddIn
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGallery SlideBibGallery;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton padding;
-        internal Microsoft.Office.Tools.Ribbon.RibbonBox box2;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group3;
         internal Microsoft.Office.Tools.Ribbon.RibbonGallery ImageBib;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group4;
@@ -535,6 +524,7 @@ namespace JanusPPTAddIn
         internal Microsoft.Office.Tools.Ribbon.RibbonEditBox editBox1;
         internal Microsoft.Office.Tools.Ribbon.RibbonEditBox editBox2;
         internal Microsoft.Office.Tools.Ribbon.RibbonEditBox editBox3;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button3;
     }
 
     partial class ThisRibbonCollection
